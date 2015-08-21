@@ -48,7 +48,7 @@ public class MoviesFragment extends Fragment {
     static int mPageNumber = 1;
     Boolean mIncrementPage = false;
 
-    static final String CURRENT_PAGE = "com.sushmanayak.PopularMovies.CurrentMoviePage";
+    static final String MOVIE_LIST = "com.sushmanayak.PopularMovies.CurrentMoviePage";
 
     public static final String LOG_TAG = MoviesActivity.class.getSimpleName();
 
@@ -91,8 +91,16 @@ public class MoviesFragment extends Fragment {
         mMoviesGridView.setEmptyView(imgView);
 
         // Fetch the movie list
-        FetchMoviesTask task = new FetchMoviesTask();
-        task.execute(mCurrentSortMethod.ordinal());
+        if(savedInstanceState == null) {
+            FetchMoviesTask task = new FetchMoviesTask();
+            task.execute(mCurrentSortMethod.ordinal());
+        }
+        else
+        {
+            ArrayList<Movie> mMovieList = MovieList.getInstance().getMovieArrayList();
+            mMovieList = savedInstanceState.getParcelableArrayList(MOVIE_LIST);
+            mMoviesAdapter.notifyDataSetChanged();
+        }
 
         // Load the next page of movies when the floating button is clicked
         mLoadMovies = (FloatingActionButton) view.findViewById(R.id.loadMovies);
@@ -105,6 +113,12 @@ public class MoviesFragment extends Fragment {
             }
         });
         return view;
+    }
+    
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(MOVIE_LIST, MovieList.getInstance().getMovieArrayList());
+        super.onSaveInstanceState(outState);
     }
 
     public AdapterView.OnItemClickListener movieItemClicked = new AdapterView.OnItemClickListener() {
