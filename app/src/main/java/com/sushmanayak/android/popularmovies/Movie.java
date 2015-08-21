@@ -1,6 +1,8 @@
 package com.sushmanayak.android.popularmovies;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,7 +10,7 @@ import org.json.JSONObject;
 /**
  * Created by SushmaNayak on 8/17/2015.
  */
-public class Movie {
+public class Movie implements Parcelable {
 
     Context mContext;
     private String mTitle;
@@ -26,8 +28,7 @@ public class Movie {
     static final String MOVIEDB_USERRATING = "vote_average";
     static final String BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w300/";
 
-    public Movie(Context context, JSONObject movieObject) throws JSONException
-    {
+    public Movie(Context context, JSONObject movieObject) throws JSONException {
         mContext = context;
         mTitle = movieObject.getString(MOVIEDB_TITLE);
         mOverview = movieObject.getString(MOVIEDB_OVERVIEW);
@@ -35,6 +36,15 @@ public class Movie {
         mReleaseDate = movieObject.getString(MOVIEDB_RELEASEDATE);
         mThumbNailPath = movieObject.getString(MOVIEDB_THUMBNAILPATH);
         mUserRating = movieObject.getString(MOVIEDB_USERRATING);
+    }
+
+    private Movie(Parcel in) {
+        mTitle = in.readString();
+        mOverview = in.readString();
+        mPosterPath = in.readString();
+        mReleaseDate = in.readString();
+        mThumbNailPath = in.readString();
+        mUserRating = in.readString();
     }
 
     public String getTitle() {
@@ -71,4 +81,27 @@ public class Movie {
     public String getUserRating() {
         return mUserRating;
     }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(mTitle);
+        out.writeString(mOverview);
+        out.writeString(mPosterPath);
+        out.writeString(mReleaseDate);
+        out.writeString(mThumbNailPath);
+        out.writeString(mUserRating);
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
