@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="floating_button_margin">20dp</dimen>
+    <dimen name="activity_layout_margin">8dp</dimen>
+    <dimen name="vertical_padding">24dp</dimen>
+    <dimen name="horizontal_padding">16dp</dimen>
+    <dimen name="minimum_spacing">2dp</dimen>
+    <dimen name="detail_backdrop_height">256dp</dimen>
+    <dimen name="expandedTitleMarginEnd">64dp</dimen>
+    <dimen name="expandedTitleMarginStart">48dp</dimen>
+</resources>

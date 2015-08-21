@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_sortby_popularity">Most Popular</string>
+    <string name="action_sortby_ratings">Top Rated</string>
+
+    <string name="releasedate_text">Release Date</string>
+    <string name="userrating_text">User Rating</string>
+    <string name="overview_text">Overview</string>
+
+    <string name="title_activity_movie_info">Movie Details</string>
+    <string name="infoNA">Information not available</string>
+
+    <string name="api_key">Your API Key</string>
+</resources>

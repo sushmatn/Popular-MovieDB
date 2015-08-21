@@ -1,0 +1,2 @@
+include ':app'
+include ':picasso-2.5.2'
