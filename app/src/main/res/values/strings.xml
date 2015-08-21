@@ -7,10 +7,10 @@
 
     <string name="releasedate_text">Release Date</string>
     <string name="userrating_text">User Rating</string>
-    <string name="overview_text">Overview</string>
+    <string name="overview_text">Plot Synopsis</string>
 
     <string name="title_activity_movie_info">Movie Details</string>
     <string name="infoNA">Information not available</string>
 
-    <string name="api_key">Your API Key</string>
+    <string name="api_key">a0afe00f0a7d96320a7150d4453fc25f</string>
 </resources>
