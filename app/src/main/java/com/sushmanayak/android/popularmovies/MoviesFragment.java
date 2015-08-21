@@ -92,7 +92,7 @@ public class MoviesFragment extends Fragment {
 
         // Fetch the movie list
         FetchMoviesTask task = new FetchMoviesTask();
-        task.execute(SearchMethod.POPULARITY.ordinal());
+        task.execute(mCurrentSortMethod.ordinal());
 
         // Load the next page of movies when the floating button is clicked
         mLoadMovies = (FloatingActionButton) view.findViewById(R.id.loadMovies);
